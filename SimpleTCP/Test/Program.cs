@@ -11,10 +11,15 @@ namespace SimpleTCP
     {
         static void Main(string[] args)
         {
-            PacketHeader<Cat> cat = new PacketHeader<Cat>();
+            string name = "Stanley";
+            string weapon = "Water Balloons";
+            int age = 19;
+            PacketHeader.Warlord warlord = new PacketHeader.Warlord(name, weapon, age);
+
         
 
-            Console.WriteLine(  );
+            Console.WriteLine(warlord);
+            
             Console.ReadLine(); 
 
 
