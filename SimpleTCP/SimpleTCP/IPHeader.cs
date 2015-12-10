@@ -13,26 +13,28 @@ namespace SimpleTCP
             throw new NotImplementedException();    
         }
 
+        /*
         private bool isTCPPacket;
         {
             if (true);
             {
                     
             }
-	
+        }
+	*/
 
 	                    
-        public bool IsTCPPacket
-        {
-            get
-            {
-                return isTCPPacket;
-            }
+        //public bool IsTCPPacket
+        //{
+        //    get
+        //    {
+        //        return isTCPPacket;
+        //    }
 
-            set
-            {
-                this.isTCPPacket = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.isTCPPacket = value;
+        //    }
+        
     }
 }

@@ -8,6 +8,9 @@ using System.IO;
 
 namespace SimpleTCP
 {
+
+
+
     class TCPPacket<T>
     {
         public byte[] ObjectToByteArray(Object obj)
