@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,15 @@ using System.IO;
 
 namespace SimpleTCP
 {
-    public class PacketHeader
+    public abstract class ByteArray
     {
-        public BitArray _sourcePort { get; private set; } // 16
+        public static ByteArray CreateByteArray(int sourcePort, int destinationPort, int sequenceNumber, int acknowledgementNumber)
+        {
+            return new ByteArray(sourcePort, destinationPort, sequenceNumber, acknowledgementNumber);
+        }
+
+        public BitArray SourcePort { get; private set; } 
+
         public BitArray _destinationPort { get; private set; } // 16
         public BitArray _sequenceNumber { get; private set; } // 32
         public BitArray _acknowledgementNumber { get; private set; } // 32
@@ -25,10 +32,19 @@ namespace SimpleTCP
         public BitArray _options { get; private set; } // (between 0/10)
 
 
-
-
-        public class Warlord
+        private ByteArray(int sourcePort, int destinationPort, int sequenceNumber, int acknowledgementNumber)
         {
+            
+        }
+        
+    }    
+
+
+
+
+
+    public class Warlord
+    {
 
 
             public Warlord(string name, string weapon, int age)
@@ -43,12 +59,12 @@ namespace SimpleTCP
 
 
 
-        }
-
-        }
-
-
     }
+
+}
+
+
+    
 
    
 

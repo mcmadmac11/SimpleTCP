@@ -1,57 +1,38 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SimpleTCP
 {
-    internal class TCPPacket
+    public class TCPPacket<T>
     {
-        public byte[] ObjectToByteArray(object theDude)
+        public byte[] ObjectToByteArray(T data)
         {
-            throw new NotImplementedException();
-         
-            
-                var formatter = new BinaryFormatter();
+            try
+            {
+                var formatBinary = new BinaryFormatter();
                 using (var memoryStream = new MemoryStream())
                 {
-                    formatter.Serialize(memoryStream, theDude);
-                }
-
-                if (theDude == null)
-                {
-
-
-                    return null;
-                    var binFormat = new BinaryFormatter();
-                    var memStrm = new MemoryStream();
-                    binFormat.Serialize(memStrm, theDude);
-                    return memStrm.ToArray();
+                    formatBinary.Serialize(memoryStream, data);
+                    return memoryStream.ToArray();
                 }
             }
-                
-
-
-
-
-
-
-
-
-
-
-
-
-            object ByteArrayToObject 
-                (byte[]
-                bytes)
-                {
-                    var memoryStream = new MemoryStream();
-                    var binaryForm = new BinaryFormatter();
-                    memoryStream.Write(bytes, 0, bytes.Length);
-                    memoryStream.Seek(0, SeekOrigin.Begin);
-                    var var = binaryForm.Deserialize(memoryStream);
-                    return var;
-                }
+            catch (Exception)
+            {
+                return new byte[64];
             }
         }
+
+        public object ByteArrayToObject(byte[] bytes)
+        {
+            var binFormatter = new BinaryFormatter();
+            using (var memoryStream = new MemoryStream())
+            {
+                memoryStream.Write(bytes, 0, bytes.Length);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                var newObject = binFormatter.Deserialize(memoryStream);
+                return newObject;
+            }
+        }
+    }
+}
