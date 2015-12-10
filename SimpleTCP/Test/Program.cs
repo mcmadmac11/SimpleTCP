@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleTCP;
 
-namespace Test
+namespace SimpleTCP
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello");
+            PacketHeader<Cat> cat = new PacketHeader<Cat>();
+        
+
+            Console.WriteLine(  );
+            Console.ReadLine(); 
+
+
         }
-    }
+    }   
 }
+    
+
