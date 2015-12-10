@@ -23,11 +23,11 @@ namespace SimpleTCP
             return memStrm.ToArray();             
         }
 
-        public object ByteToArray(byte[] arrBytes)
+        public object ByteToArray(byte[] T)
         {
             MemoryStream memoryStream = new MemoryStream();
             BinaryFormatter binaryForm = new BinaryFormatter();
-            memoryStream.Write(arrBytes, 0, arrBytes.Length);
+            memoryStream.Write(T, 0, T.Length);
             memoryStream.Seek(0, SeekOrigin.Begin);
             Object obj = (Object) binaryForm.Deserialize(memoryStream);
             return obj;

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security;
+
 
 namespace SimpleTCP
 {
@@ -20,11 +22,24 @@ namespace SimpleTCP
         public BitArray _checkSum { get; private set; } // 16
         public BitArray _urgentPointer { get; private set; } //
         public BitArray _options { get; private set; } // (between 0/10)
+    
+
+   
+ 
+    
+         
+
+        
+        
+        
+       
     }
+}   
 
-        public PacketHeader(int _sourcePort, int _destinationPort, int _sequenceNumber,);
-        {
-            
-        }
 
-}
+
+
+
+
+
+
