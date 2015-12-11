@@ -3,38 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SimpleTCP
 {
-    public class IPHeader<T>
+    [Serializable]
+    public class Person : ISerializable
     {
-        public T CreateIPHeader()
+        public int age;
+        public string name;
+
+        public Person()
         {
-            throw new NotImplementedException();    
+            age = 33;
+            name = null;
         }
-
-        /*
-        private bool isTCPPacket;
-        {
-            if (true);
-            {
-                    
-            }
-        }
-	*/
-
-	                    
-        //public bool IsTCPPacket
-        //{
-        //    get
-        //    {
-        //        return isTCPPacket;
-        //    }
-
-        //    set
-        //    {
-        //        this.isTCPPacket = value;
-        //    }
+    // serialization function
+        public Person(SerializationInfo info, StreamingContext context);
         
+
+            
+
+        
+        }    
+
     }
 }

@@ -1,29 +1,37 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleTCP;
+using System.IO;
+using System.IO.Ports;
+using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 
-namespace SimpleTCP
+namespace Test
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] kwargs);
         {
-            string name = "Stanley";
-            string weapon = "Water Balloons";
-            int age = 19;
-            warlord = new ByteArray.Warlord(name, weapon, age);
-
-        
-
-            Console.WriteLine(warlord);
-            
-            Console.ReadLine(); 
+            TestByteArray();
 
 
         }
+
+        public ByteArray TestByteArray()
+        {
+            ByteArray byteArray = new ByteArray();
+
+            Console.WriteLine(byteArray);
+            return byteArray;
+
+        }
+        
+
     }   
 }
     

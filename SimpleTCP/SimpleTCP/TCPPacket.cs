@@ -1,27 +1,35 @@
 ﻿using System;
+using System.CodeDom;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 
 namespace SimpleTCP
 {
+//http://www.winsocketdotnetworkprogramming.com/clientserversocketnetworkcommunication8f.html
+    [Serializable]
     public class TCPPacket<T>
     {
+        public byte[] bytes { get; set; }                  
         public byte[] ObjectToByteArray(T data)
         {
             try
             {
-                var formatBinary = new BinaryFormatter();
-                using (var memoryStream = new MemoryStream())
+                BinaryFormatter formatBinary = new BinaryFormatter();
+                using (MemoryStream memoryStream = new MemoryStream())
                 {
                     formatBinary.Serialize(memoryStream, data);
                     return memoryStream.ToArray();
                 }
             }
-            catch (Exception)
+                catch (Exception e)
             {
                 return new byte[64];
             }
-        }
+            
+        }   
+
+
 
         public object ByteArrayToObject(byte[] bytes)
         {
@@ -34,5 +42,14 @@ namespace SimpleTCP
                 return newObject;
             }
         }
+
+        public TCPPacket(T data)
+        {
+            bytes = ObjectToByteArray(data);
+
+
+
+        } 
     }
-}
+
+}   
