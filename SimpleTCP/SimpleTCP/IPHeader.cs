@@ -20,13 +20,19 @@ namespace SimpleTCP
             name = null;
         }
     // serialization function
-        public Person(SerializationInfo info, StreamingContext context);
-        
-
-            
-
-        
+        public Person(SerializationInfo info, StreamingContext context)
+        {
+            age = (int)info.GetValue("Age", typeof(int));
+            name = (string)info.GetValue("Name", typeof(string));         
         }    
 
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Age", age);
+            info.AddValue("Name", name);
+        }
+        
     }
+
 }
